@@ -117,7 +117,7 @@
         .hero {
             height: fit-content;
             display: flex;
-            align-items: start;
+            align-items: center;
             padding: 120px 40px 40px;
             position: relative;
         }
@@ -128,7 +128,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
-            align-items: start;
+            align-items: center;
             width: 100%;
         }
 
