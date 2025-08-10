@@ -3,83 +3,408 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eleazar Ogoyemi</title>
-    <link rel="stylesheet" href="assests/style.css" />
+    <title>My Work | Eleazar Ogoyemi | Portfolio & Projects</title>
+    <link rel="stylesheet" href="assests/work-style.css" />
+    <link rel="icon" href="/assests/my-image.png" />
+
+    <meta
+      name="title"
+      content="Portfolio & Projects | Eleazar Ogoyemi | Eleyoungtech Founder"
+    />
+    <meta
+      name="description"
+      content="Explore the creative portfolio of Eleazar Ogoyemi - featuring web development projects, UI/UX designs, brand identities, and innovative tech solutions from Eleyoungtech."
+    />
+    <meta
+      name="google-site-verification"
+      content="R-GqhNHxAiWUFxZzHgEhQn-6AExIjH713CwCs7Po5Y0"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://eleazarogoyemi.onrender.com/work"
+    />
+    <meta
+      property="og:title"
+      content="Portfolio & Projects | Eleazar Ogoyemi"
+    />
+    <meta
+      property="og:description"
+      content="Discover the innovative projects and creative works by Eleazar Ogoyemi, founder of Eleyoungtech - from web apps to brand designs."
+    />
+    <meta
+      property="og:image"
+      content="https://eleazarogoyemi.onrender.com/assests/work-preview.png"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:url"
+      content="https://eleazarogoyemi.onrender.com/work"
+    />
+    <meta
+      name="twitter:title"
+      content="Portfolio & Projects | Eleazar Ogoyemi"
+    />
+    <meta
+      name="twitter:description"
+      content="Explore cutting-edge projects and creative solutions by tech innovator Eleazar Ogoyemi."
+    />
+    <meta
+      name="twitter:image"
+      content="https://eleazarogoyemi.onrender.com/assests/work-preview.png"
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="assests/style.css" />
+    <link rel="stylesheet" href="assests/others.css" />
   </head>
   <body>
+    <div class="animated-bg"></div>
     <header>
+      <div class="mobile-nav-backdrop"></div>
       <nav>
-        <div class="my-name">OGOYEMI ELEAZAR</div>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a class="active" href="">Work</a></li>
-          <li><a href="">Social Handles</a></li>
-          <li><a href="">Contact</a></li>
+        <div class="logo">ELEAZAR OGOYEMI</div>
+        <div class="ham-menu"><span></span><span></span><span></span></div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="work.html" class="active">Work</a></li>
+          <li><a href="social.html">Social</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
+      <div class="mobile-nav">
+        <ul class="mobile-nav-links">
+          <li class="btn-primary">
+            <a href="index.html" class="active">Home</a>
+          </li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="social.html">Social</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
     </header>
-    <section class="work">
-      <div class="work-content">
-        <div class="work-content-thumbnail"></div>
-        <a href="" class="work-content-link"></a>
-        <p class="description"></p>
+
+    <section class="work-hero">
+      <div class="work-hero-container">
+        <div class="hero-content">
+          <div class="hero-greeting">
+            <span class="icon">⚡</span> My Creative Portfolio
+          </div>
+          <h1 class="hero-title">Transforming Ideas Into Digital Reality</h1>
+          <p class="hero-description">
+            From innovative web applications to compelling brand identities,
+            explore a collection of projects that showcase creativity, technical
+            excellence, and real-world impact.
+          </p>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">50+</div>
+              <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">25+</div>
+              <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">5</div>
+              <div class="stat-label">Brands Founded</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="work-content">
-        <div class="work-content-thumbnail"></div>
-        <a href="" class="work-content-link"></a>
-        <p class="description"></p>
+    </section>
+
+    <section class="featured-projects">
+      <div class="container">
+        <h2 class="section-title reveal">Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card featured reveal">
+            <div class="project-image">
+              <div class="project-preview">
+                <div class="preview-content">
+                  <div class="browser-bar">
+                    <div class="browser-dots">
+                      <span></span><span></span><span></span>
+                    </div>
+                    <div class="url-bar">eleyoungtech.com</div>
+                  </div>
+                  <div class="preview-body">
+                    <div class="logo-section">
+                      <div class="animated-logo">EYT</div>
+                      <h3>Eleyoungtech</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-header">
+                <div class="project-category">Brand Platform</div>
+                <div class="project-status complete">Complete</div>
+              </div>
+              <h3 class="project-title">Eleyoungtech Ecosystem</h3>
+              <p class="project-description">
+                A comprehensive digital ecosystem encompassing multiple brands
+                and services, featuring modern design, seamless user experience,
+                and scalable architecture.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">UI/UX</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="link-btn primary">View Live</a>
+                <a href="#" class="link-btn secondary">Case Study</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-card reveal">
+            <div class="project-info">
+              <div class="project-header">
+                <div class="project-category">Web Platform</div>
+                <div class="project-status in-progress">In Progress</div>
+              </div>
+              <h3 class="project-title">Eynet Analytics Dashboard</h3>
+              <p class="project-description">
+                Advanced analytics and data visualization platform providing
+                comprehensive insights and reporting tools for business
+                intelligence and decision making.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">Chart.js</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Analytics</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="link-btn primary">Demo</a>
+                <a href="#" class="link-btn secondary">Documentation</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card reveal">
+            <div class="project-info">
+              <div class="project-header">
+                <div class="project-category">Portfolio Website</div>
+                <div class="project-status complete">Complete</div>
+              </div>
+              <h3 class="project-title">Personal Portfolio Website</h3>
+              <p class="project-description">
+                Modern, responsive portfolio website showcasing projects,
+                skills, and professional journey with advanced animations and
+                interactive elements.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Responsive</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="link-btn primary">View Live</a>
+                <a href="#" class="link-btn secondary">Source Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="work-content">
-        <div class="work-content-thumbnail"></div>
-        <a href="" class="work-content-link"></a>
-        <p class="description"></p>
+    </section>
+
+    <section class="skills-section">
+      <div class="container">
+        <h2 class="section-title reveal">Technologies & Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-category reveal">
+            <div class="category-icon">💻</div>
+            <h3 class="category-title">Frontend Development</h3>
+            <div class="skills-list">
+              <div class="skill-item">
+                <span class="skill-name">HTML5/CSS3</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">JavaScript</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 75%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">React/Vue.js</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 20%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="category-icon">⚙️</div>
+            <h3 class="category-title">Backend & Database</h3>
+            <div class="skills-list">
+              <div class="skill-item">
+                <span class="skill-name">Node.js</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 20%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">MongoDB</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 10%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">PostgreSQL</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 5%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="category-icon">🎨</div>
+            <h3 class="category-title">Design & Creative</h3>
+            <div class="skills-list">
+              <div class="skill-item">
+                <span class="skill-name">Logo Design</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Graphics Design</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 60%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Motion Graphics</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 30%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="category-icon">📱</div>
+            <h3 class="category-title">Content & Marketing</h3>
+            <div class="skills-list">
+              <div class="skill-item">
+                <span class="skill-name">Content Creation</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Video Production</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Digital Marketing</span>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 10%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="work-content">
-        <div class="work-content-thumbnail"></div>
-        <a href="" class="work-content-link"></a>
-        <p class="description"></p>
+    </section>
+    <section class="process-section">
+      <div class="container">
+        <h2 class="section-title reveal">My Creative Process</h2>
+        <div class="process-timeline">
+          <div class="process-step reveal">
+            <div class="step-number">01</div>
+            <div class="step-content">
+              <h3 class="step-title">Discover & Research</h3>
+              <p class="step-description">
+                Understanding client goals, target audience, and market
+                landscape through comprehensive research and strategic planning.
+              </p>
+              <div class="step-tools">
+                <span class="tool-tag">User Research</span>
+                <span class="tool-tag">Market Analysis</span>
+                <span class="tool-tag">Competitive Study</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="process-step reveal">
+            <div class="step-number">02</div>
+            <div class="step-content">
+              <h3 class="step-title">Develop & Build</h3>
+              <p class="step-description">
+                Transforming designs into functional, responsive, and performant
+                applications using modern technologies and best practices.
+              </p>
+              <div class="step-tools">
+                <span class="tool-tag">Modern Frameworks</span>
+                <span class="tool-tag">Clean Code</span>
+                <span class="tool-tag">Performance</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="process-step reveal">
+            <div class="step-number">03</div>
+            <div class="step-content">
+              <h3 class="step-title">Test & Launch</h3>
+              <p class="step-description">
+                Rigorous testing, optimization, and deployment with ongoing
+                support to ensure project success and client satisfaction.
+              </p>
+              <div class="step-tools">
+                <span class="tool-tag">Quality Assurance</span>
+                <span class="tool-tag">Deployment</span>
+                <span class="tool-tag">Maintenance</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="work-content">
-        <div class="work-content-thumbnail"></div>
-        <a href="" class="work-content-link"></a>
-        <p class="description"></p>
-      </div>
-      <div class="work-content">
-        <div class="work-content-thumbnail"></div>
-        <a href="" class="work-content-link"></a>
-        <p class="description"></p>
-      </div>
-      <div class="work-content">
-        <div class="work-content-thumbnail"></div>
-        <a href="" class="work-content-link"></a>
-        <p class="description"></p>
-      </div>
-      <div class="work-content">
-        <div class="work-content-thumbnail"></div>
-        <a href="" class="work-content-link"></a>
-        <p class="description"></p>
-      </div>
-      <div class="work-content">
-        <div class="work-content-thumbnail"></div>
-        <a href="" class="work-content-link"></a>
-        <p class="description"></p>
-      </div>
-      <div class="work-content">
-        <div class="work-content-thumbnail"></div>
-        <a href="" class="work-content-link"></a>
-        <p class="description"></p>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content reveal">
+          <h2 class="cta-title">Ready to Bring Your Vision to Life?</h2>
+          <p class="cta-description">
+            Let's collaborate on your next project and create something
+            extraordinary together. From concept to launch, I'll help you
+            achieve your digital goals.
+          </p>
+          <div class="cta-buttons" style="justify-content: center">
+            <a href="#" class="btn btn-primary">Start a Project</a>
+            <a href="res.dev.html" class="btn btn-secondary">View Resume</a>
+          </div>
+        </div>
       </div>
     </section>
 
     <footer>
-      Let’s create, build, and evolve together. Follow more of my journey on
-      Instagram.
+      <p>
+        Crafting digital experiences that inspire and innovate. Let's build the
+        future together! 🚀
+      </p>
     </footer>
+    <script src="src/scripts/main.js"></script>
+    <script src="src/scripts/app.js"></script>
   </body>
 </html>

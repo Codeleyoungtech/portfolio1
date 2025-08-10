@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Me | Eleazar Ogoyemi | Let's Work Together</title>
+    <link rel="icon" href="/assests/my-image.png" />
+
+    <meta
+      name="title"
+      content="Contact Eleazar Ogoyemi | Collaboration & Business Inquiries"
+    />
+    <meta
+      name="description"
+      content="Get in touch with Eleazar Ogoyemi for collaborations, business inquiries, tech consultations, or just to say hello. Let's create something amazing together!"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assests/style.css" />
+    <link rel="stylesheet" href="assests/others.css" />
+  </head>
+  <body>
+    <div class="animated-bg"></div>
+
+    <header>
+      <div class="mobile-nav-backdrop"></div>
+      <nav>
+        <div class="logo">ELEAZAR OGOYEMI</div>
+        <div class="ham-menu"><span></span><span></span><span></span></div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="social.html">Social</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-nav">
+        <ul class="mobile-nav-links">
+          <li class="btn-primary">
+            <a href="index.html" class="active">Home</a>
+          </li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="social.html">Social</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="contact-hero">
+      <div class="container">
+        <div class="hero-greeting">
+          <span class="contact-emoji">📬</span> Get In Touch
+        </div>
+        <h1 class="hero-title">Let's Create Something Amazing</h1>
+        <p class="hero-description">
+          Have a project in mind? Want to collaborate? Or just want to say
+          hello? I'd love to hear from you! Let's turn your ideas into reality.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-form-section">
+      <div class="container">
+        <div class="form-container">
+          <h2 class="section-title reveal">Send Me a Message</h2>
+          <p class="section-subtitle reveal">
+            Fill out the form below and I'll get back to you within 24 hours!
+          </p>
+
+          <form class="contact-form reveal" id="contactForm">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <!-- <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject" required>
+                <option value="">Select a subject</option>
+                <option value="collaboration">Collaboration Inquiry</option>
+                <option value="business">Business Proposal</option>
+                <option value="consultation">Tech Consultation</option>
+                <option value="speaking">Speaking Engagement</option>
+                <option value="interview">Interview Request</option>
+                <option value="feedback">Feedback/Testimonial</option>
+                <option value="other">Other</option>
+              </select>
+            </div> -->
+
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Tell me about your project, idea, or how I can help you..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <span class="btn-text">Send Message</span>
+              <span class="btn-loading" style="display: none">Sending...</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-methods">
+      <div class="container">
+        <div class="methods-grid">
+          <div class="method-card reveal">
+            <div class="method-icon">📧</div>
+            <h3 class="method-title">Email</h3>
+            <p class="method-info">For business inquiries and collaborations</p>
+            <a href="mailto:hello@eleyoungtech.com" class="method-action"
+              >Send Email</a
+            >
+          </div>
+
+          <div class="method-card reveal">
+            <div class="method-icon">💼</div>
+            <h3 class="method-title">LinkedIn</h3>
+            <p class="method-info">Professional connections and networking</p>
+            <a
+              href="https://linkedin.com/in/eleazarogoyemi"
+              class="method-action"
+              target="_blank"
+              >Connect</a
+            >
+          </div>
+
+          <div class="method-card reveal">
+            <div class="method-icon">🐦</div>
+            <h3 class="method-title">Twitter</h3>
+            <p class="method-info">Quick messages and tech discussions</p>
+            <a
+              href="https://twitter.com/eleyoungtech"
+              class="method-action"
+              target="_blank"
+              >Message</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-contact">
+      <div class="container">
+        <h2 class="section-title reveal">Quick Contact Info</h2>
+
+        <div class="quick-contact-grid">
+          <div class="quick-item reveal">
+            <div class="quick-icon">🌍</div>
+            <div class="quick-title">Location</div>
+            <div class="quick-info">Remote</div>
+          </div>
+
+          <div class="quick-item reveal">
+            <div class="quick-icon">⏰</div>
+            <div class="quick-title">Timezone</div>
+            <div class="quick-info">GMT+1 (WAT)</div>
+          </div>
+
+          <div class="quick-item reveal">
+            <div class="quick-icon">🗣️</div>
+            <div class="quick-title">Languages</div>
+            <div class="quick-info">English, Spanish</div>
+          </div>
+
+          <div class="quick-item reveal">
+            <div class="quick-icon">💻</div>
+            <div class="quick-title">Availability</div>
+            <div class="quick-info">Open for projects</div>
+          </div>
+        </div>
+
+        <div class="response-info reveal">
+          <div class="response-icon">⚡</div>
+          <p class="response-text">
+            <strong>Fast Response Guaranteed!</strong><br />
+            I typically respond to all messages within 24 hours. For urgent
+            matters, feel free to reach out via Twitter DM for a quicker
+            response.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Ready to start something great? I'm just a message away! 🚀</p>
+    </footer>
+
+    <div class="success-message" id="successMessage">
+      <strong>✅ Message sent successfully!</strong><br />
+      I'll get back to you within 24 hours.
+    </div>
+    <script src="src/scripts/main.js"></script>
+    <script src="src/scripts/app.js"></script>
+  </body>
+</html>
