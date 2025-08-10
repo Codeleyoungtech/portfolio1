@@ -1,4 +1,4 @@
-:root {
+u:root {
   --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
@@ -342,6 +342,7 @@ nav {
   transition: all 0.3s ease;
   cursor: pointer;
   display: inline-block;
+white-space: no-wrap;
 }
 
 .btn-primary {
