@@ -265,157 +265,220 @@
     <script src="src/scripts/app.js"></script>
 <script>
 const API_KEY = "AIzaSyAcVtnBtaBt2oW3tlklyxY0hAYyPUzn71g";
-        const CHANNEL_ID = "UCWzAP-RJWgra78fPNbRd8LQ";
+const CHANNEL_ID = "UCWzAP-RJWgra78fPNbRd8LQ";
 
-        let currentVideoId = "";
+let currentVideoId = "";
 
-        function updateStatus(message, type = 'loading') {
-            const statusEl = document.getElementById('statusIndicator');
-            statusEl.textContent = message;
+async function getLatestVideo() {
+    try {
+        const response = await fetch(
+            `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=1&type=video`
+        );
+
+        if (!response.ok) {
+            throw new Error(`API Error: ${response.status} - ${response.statusText}`);
         }
 
-        async function getLatestVideo() {
-            updateStatus('Fetching latest video...', 'loading');
-            
-            try {
-                const response = await fetch(
-                    `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=1&type=video`
-                );
+        const data = await response.json();
 
-                if (!response.ok) {
-                    throw new Error(`API Error: ${response.status} - ${response.statusText}`);
-                }
-
-                const data = await response.json();
-
-                if (data.error) {
-                    throw new Error(`YouTube API Error: ${data.error.message}`);
-                }
-
-                if (data.items && data.items.length > 0) {
-                    const video = data.items[0];
-                    await getVideoStats(video);
-                } else {
-                    showError("No videos found on this channel.");
-                    updateStatus('No videos found', 'error');
-                }
-            } catch (error) {
-                console.error("Error fetching video:", error);
-                showError(`Error loading video: ${error.message}`);
-                updateStatus('Failed to load', 'error');
-            }
+        if (data.error) {
+            throw new Error(`YouTube API Error: ${data.error.message}`);
         }
 
-        async function getVideoStats(video) {
-            try {
-                const videoId = video.id.videoId;
-                const statsResponse = await fetch(
-                    `https://www.googleapis.com/youtube/v3/videos?key=${API_KEY}&id=${videoId}&part=statistics,snippet`
-                );
+        if (data.items && data.items.length > 0) {
+            const video = data.items[0];
+            await getVideoStats(video);
+        } else {
+            showError("No videos found on this channel.");
+        }
+    } catch (error) {
+        console.error("Error fetching video:", error);
+        showError(`Error loading video: ${error.message}`);
+    }
+}
 
-                if (!statsResponse.ok) {
-                    throw new Error(`Stats API Error: ${statsResponse.status}`);
-                }
+async function getVideoStats(video) {
+    try {
+        const videoId = video.id.videoId;
+        const statsResponse = await fetch(
+            `https://www.googleapis.com/youtube/v3/videos?key=${API_KEY}&id=${videoId}&part=statistics,snippet`
+        );
 
-                const statsData = await statsResponse.json();
-
-                if (statsData.items && statsData.items.length > 0) {
-                    displayVideo(video, statsData.items[0]);
-                } else {
-                    displayVideo(video, null);
-                }
-                
-                updateStatus('Video loaded successfully!', 'success');
-            } catch (error) {
-                console.error("Error fetching video stats:", error);
-                displayVideo(video, null);
-                updateStatus('Partial load - no stats', 'success');
-            }
+        if (!statsResponse.ok) {
+            throw new Error(`Stats API Error: ${statsResponse.status}`);
         }
 
-        function displayVideo(video, statsData) {
-            currentVideoId = video.id.videoId;
-            const title = video.snippet.title;
-            const thumbnail =
-                video.snippet.thumbnails.maxres?.url ||
-                video.snippet.thumbnails.high?.url ||
-                video.snippet.thumbnails.medium.url;
+        const statsData = await statsResponse.json();
 
-            const publishedDate = new Date(video.snippet.publishedAt);
-            const daysSince = Math.floor(
-                (new Date() - publishedDate) / (1000 * 60 * 60 * 24)
-            );
-
-            let timeAgo;
-            if (daysSince === 0) {
-                timeAgo = "Today";
-            } else if (daysSince === 1) {
-                timeAgo = "1 day ago";
-            } else if (daysSince < 7) {
-                timeAgo = `${daysSince} days ago`;
-            } else if (daysSince < 30) {
-                const weeks = Math.floor(daysSince / 7);
-                timeAgo = weeks === 1 ? "1 week ago" : `${weeks} weeks ago`;
-            } else if (daysSince < 365) {
-                const months = Math.floor(daysSince / 30);
-                timeAgo = months === 1 ? "1 month ago" : `${months} months ago`;
-            } else {
-                const years = Math.floor(daysSince / 365);
-                timeAgo = years === 1 ? "1 year ago" : `${years} years ago`;
-            }
-
-            // Format view count
-            let viewCount = "--";
-            if (statsData && statsData.statistics && statsData.statistics.viewCount) {
-                const views = parseInt(statsData.statistics.viewCount);
-                if (views < 1000) {
-                    viewCount = `${views} views`;
-                } else if (views < 1000000) {
-                    viewCount = `${(views / 1000).toFixed(1)}K views`;
-                } else {
-                    viewCount = `${(views / 1000000).toFixed(1)}M views`;
-                }
-            }
-
-            // Display thumbnail as clickable image
-            const thumbnailDiv = document.getElementById("videoThumbnail");
-            thumbnailDiv.innerHTML = `<img src="${thumbnail}" alt="Video thumbnail" width="480" height="360" style="cursor: pointer;">`;
-            
-            // Set click handler
-            const img = thumbnailDiv.querySelector('img');
-            img.onclick = () => openVideo(currentVideoId);
-
-            // Update video info
-            document.getElementById("videoTitle").textContent = title;
-            document.getElementById("videoDate").textContent = timeAgo;
-            document.getElementById("videoViews").textContent = viewCount;
+        if (statsData.items && statsData.items.length > 0) {
+            displayVideo(video, statsData.items[0]);
+        } else {
+            displayVideo(video, null);
         }
+    } catch (error) {
+        console.error("Error fetching video stats:", error);
+        displayVideo(video, null);
+    }
+}
 
-        function showError(message) {
-            const thumbnailDiv = document.getElementById("videoThumbnail");
-            thumbnailDiv.innerHTML = `<div>Error: ${message}</div>`;
+function displayVideo(video, statsData) {
+    currentVideoId = video.id.videoId;
+    const title = video.snippet.title;
+    const thumbnail =
+        video.snippet.thumbnails.maxres?.url ||
+        video.snippet.thumbnails.high?.url ||
+        video.snippet.thumbnails.medium.url;
 
-            document.getElementById("videoTitle").textContent = "Error loading video";
-            document.getElementById("videoDate").textContent = "--";
-            document.getElementById("videoViews").textContent = "--";
+    const publishedDate = new Date(video.snippet.publishedAt);
+    const daysSince = Math.floor(
+        (new Date() - publishedDate) / (1000 * 60 * 60 * 24)
+    );
+
+    let timeAgo;
+    if (daysSince === 0) {
+        timeAgo = "Today";
+    } else if (daysSince === 1) {
+        timeAgo = "1 day ago";
+    } else if (daysSince < 7) {
+        timeAgo = `${daysSince} days ago`;
+    } else if (daysSince < 30) {
+        const weeks = Math.floor(daysSince / 7);
+        timeAgo = weeks === 1 ? "1 week ago" : `${weeks} weeks ago`;
+    } else if (daysSince < 365) {
+        const months = Math.floor(daysSince / 30);
+        timeAgo = months === 1 ? "1 month ago" : `${months} months ago`;
+    } else {
+        const years = Math.floor(daysSince / 365);
+        timeAgo = years === 1 ? "1 year ago" : `${years} years ago`;
+    }
+
+    // Format view count
+    let viewCount = "--";
+    if (statsData && statsData.statistics && statsData.statistics.viewCount) {
+        const views = parseInt(statsData.statistics.viewCount);
+        if (views < 1000) {
+            viewCount = `${views} views`;
+        } else if (views < 1000000) {
+            viewCount = `${(views / 1000).toFixed(1)}K views`;
+        } else {
+            viewCount = `${(views / 1000000).toFixed(1)}M views`;
         }
+    }
 
-        function openVideo(videoId) {
-            window.open(`https://www.youtube.com/watch?v=${videoId}`, "_blank");
-        }
+    // Update thumbnail - using your HTML structure
+    const thumbnailDiv = document.getElementById("videoThumbnail");
+    if (thumbnailDiv) {
+        // Set background image for the thumbnail
+        thumbnailDiv.style.backgroundImage = `url("${thumbnail}")`;
+        thumbnailDiv.style.backgroundSize = "cover";
+        thumbnailDiv.style.backgroundPosition = "center";
+        thumbnailDiv.style.backgroundRepeat = "no-repeat";
+        thumbnailDiv.style.cursor = "pointer";
+        
+        // Clear loading text and add play button if needed
+        thumbnailDiv.innerHTML = `
+            <div class="play-button" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 60px;
+                height: 60px;
+                background: rgba(255, 0, 0, 0.9);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            ">
+                <div style="
+                    width: 0;
+                    height: 0;
+                    border-left: 15px solid white;
+                    border-top: 10px solid transparent;
+                    border-bottom: 10px solid transparent;
+                    margin-left: 3px;
+                "></div>
+            </div>
+        `;
+        
+        // Set click handler
+        thumbnailDiv.onclick = () => openVideo(currentVideoId);
+    }
 
-        // Load video on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            getLatestVideo();
-        });
+    // Update video info - using your HTML structure
+    const videoTitleEl = document.getElementById("videoTitle");
+    if (videoTitleEl) {
+        videoTitleEl.textContent = title;
+    }
 
-        // Refresh every 30 minutes
-        setInterval(getLatestVideo, 30 * 60 * 1000);
+    const videoDateEl = document.getElementById("videoDate");
+    if (videoDateEl) {
+        videoDateEl.textContent = timeAgo;
+    }
 
-        // Add manual refresh capability (click on status indicator)
-        document.getElementById('statusIndicator').onclick = () => {
-            getLatestVideo();
-        };
-</script>
+    const videoViewsEl = document.getElementById("videoViews");
+    if (videoViewsEl) {
+        videoViewsEl.textContent = viewCount;
+    }
+
+    // Update the video meta section
+    const videoMetaEl = document.getElementById("videoMeta");
+    if (videoMetaEl) {
+        videoMetaEl.innerHTML = `
+            <span>${timeAgo}</span>
+            <span>${viewCount}</span>
+        `;
+    }
+}
+
+function showError(message) {
+    const thumbnailDiv = document.getElementById("videoThumbnail");
+    if (thumbnailDiv) {
+        thumbnailDiv.style.backgroundImage = "none";
+        thumbnailDiv.style.backgroundColor = "#ffebee";
+        thumbnailDiv.style.border = "1px solid #ffcdd2";
+        thumbnailDiv.style.display = "flex";
+        thumbnailDiv.style.alignItems = "center";
+        thumbnailDiv.style.justifyContent = "center";
+        thumbnailDiv.onclick = null;
+        
+        thumbnailDiv.innerHTML = `
+            <div style="color: #d32f2f; text-align: center; padding: 20px; max-width: 80%;">
+                ${message}
+            </div>
+        `;
+    }
+
+    const videoTitleEl = document.getElementById("videoTitle");
+    if (videoTitleEl) {
+        videoTitleEl.textContent = "Error loading video";
+    }
+
+    const videoDateEl = document.getElementById("videoDate");
+    if (videoDateEl) {
+        videoDateEl.textContent = "--";
+    }
+
+    const videoViewsEl = document.getElementById("videoViews");
+    if (videoViewsEl) {
+        videoViewsEl.textContent = "--";
+    }
+}
+
+function openVideo(videoId) {
+    window.open(`https://www.youtube.com/watch?v=${videoId}`, "_blank");
+}
+
+// Load video on page load
+document.addEventListener('DOMContentLoaded', () => {
+    // Small delay to ensure all elements are rendered
+    setTimeout(() => {
+        getLatestVideo();
+    }, 500);
+});
+
+// Refresh every 30 minutes
+setInterval(getLatestVideo, 30 * 60 * 1000);</script>
   </body>
 </html>
