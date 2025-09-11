@@ -15,10 +15,7 @@
       name="description"
       content="Explore the creative portfolio of Eleazar Ogoyemi - featuring web development projects, UI/UX designs, brand identities, and innovative tech solutions from Eleyoungtech."
     />
-    <meta
-      name="google-site-verification"
-      content="R-GqhNHxAiWUFxZzHgEhQn-6AExIjH713CwCs7Po5Y0"
-    />
+   <meta name="google-site-verification" content="O2V-qUerDQ7qtJ4xNk8ViXZr74GmXqmPxBvbWUZ4owI" />
 
     <meta property="og:type" content="website" />
     <meta
@@ -125,9 +122,58 @@
       <div class="container">
         <h2 class="section-title reveal">Featured Projects</h2>
         <div class="projects-grid">
-          <div class="project-card featured reveal">
-            <div class="project-image">
-              <div class="project-preview">
+            <div class="project-card reveal">
+  <div class="project-image">
+    <div class="project-preview" >
+      <div class="preview-content" id="eleazarpreview">
+        <div class="browser-bar">
+          <div class="browser-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="url-bar">eleazarogoyemi.onrender.com</div>
+        </div>
+        <div class="preview-body">
+          <div class="logo-section">
+            <div class="animated-logo">EO</div>
+            <h3>My Portfolio</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-info">
+    <div class="project-header">
+      <div class="project-category">Web Portfolio</div>
+      <div class="project-status complete">Complete</div>
+    </div>
+
+    <h3 class="project-title">Eleazar Ogoyemi Portfolio</h3>
+    <p class="project-description">
+      A fully responsive personal portfolio website showcasing my skills,
+      projects, and brand identity. Built with modern HTML, CSS, and
+      JavaScript to deliver smooth animations and an elegant user experience.
+    </p>
+
+    <div class="project-tech">
+      <span class="tech-tag">HTML</span>
+      <span class="tech-tag">CSS</span>
+      <span class="tech-tag">JavaScript</span>
+    </div>
+
+    <div class="project-links">
+      <a href="https://eleazarogoyemi.onrender.com"
+         class="link-btn primary"
+         target="_blank" rel="noopener">View Live</a>
+      <a href="https://github.com/yourusername/portfolio"
+         class="link-btn secondary"
+         target="_blank" rel="noopener">Source Code</a>
+    </div>
+  </div>
+</div>
+          <div class="project-card reveal">
+            <!---<div class="project-image">
+              <div class="project-preview" id="#eleyoungtechpreview">
                 <div class="preview-content">
                   <div class="browser-bar">
                     <div class="browser-dots">
@@ -143,7 +189,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div>-->
             <div class="project-info">
               <div class="project-header">
                 <div class="project-category">Brand Platform</div>
@@ -167,7 +213,76 @@
               </div>
             </div>
           </div>
+          
+         <div class="project-card reveal">
+  <div class="project-image">
+    <div class="project-preview" >
+      <div class="preview-content" id="precious-fruit-preview">
+        <div class="browser-bar">
+          <div class="browser-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="url-bar">pfbs.org</div>
+        </div>
+        <div class="preview-body">
+          <div class="logo-section">
+            <div class="animated-logo">PFBS</div>
+            <h3>Precious Fruit Beginners School</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-info">
+    <div class="project-header">
+      <div class="project-category">Web App</div>
+      <div class="project-status complete">Complete</div>
+    </div>
+
+    <h3 class="project-title">Precious Fruit Beginners School</h3>
+    <p class="project-description">
+      A clean, responsive website created with HTML, CSS, and JavaScript.
+      It delivers a smooth user experience and elegant design, showcasing
+      interactive layouts and modern front-end techniques.
+    </p>
+
+    <div class="project-tech">
+      <span class="tech-tag">HTML</span>
+      <span class="tech-tag">CSS</span>
+      <span class="tech-tag">JavaScript</span>
+    </div>
+
+    <div class="project-links">
+      <a href="https://preview--precious-fruit-grow.lovable.app/"
+         class="link-btn primary"
+         target="_blank" rel="noopener">View Live</a>
+      <a href="https://github.com/yourusername/precious-fruit-grow"
+         class="link-btn secondary"
+         target="_blank" rel="noopener">Source Code</a>
+    </div>
+  </div>
+</div>
+          
           <div class="project-card reveal">
+            <div class="project-image">
+              <div class="project-preview">
+                <div class="preview-content" id="#eleyoungtechpreview">
+                  <div class="browser-bar">
+                    <div class="browser-dots">
+                      <span></span><span></span><span></span>
+                    </div>
+                    <div class="url-bar">eleyoungtech.com</div>
+                  </div>
+                  <div class="preview-body">
+                    <div class="logo-section">
+                      <div class="animated-logo">EYT</div>
+                      <h3>Eleyoungtech</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="project-info">
               <div class="project-header">
                 <div class="project-category">Web Platform</div>
@@ -404,6 +519,27 @@
         future together! 🚀
       </p>
     </footer>
+    <div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-img" alt="">
+</div>
+      <script src="src/scripts/preview.js"></script>
+    <script>
+document.querySelectorAll('.project-image').forEach(card => {
+  card.addEventListener('click', () => {
+    const src = card.querySelector('img, video, canvas')?.src
+              || card.dataset.large; // fallback if you set data-large
+    if (!src) return;
+    const lightbox = document.getElementById('lightbox');
+    lightbox.querySelector('img').src = src;
+    lightbox.classList.add('show');
+  });
+});
+
+document.querySelector('#lightbox .close').onclick = () => {
+  document.getElementById('lightbox').classList.remove('show');
+};
+</script>
     <script src="src/scripts/main.js"></script>
     <script src="src/scripts/app.js"></script>
   </body>
