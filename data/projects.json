@@ -1,0 +1,69 @@
+[
+  {
+    "id": "eleazarpreview",
+    "category": "Web Portfolio",
+    "status": "complete",
+    "title": "Eleazar Ogoyemi Portfolio",
+    "description": "A fully responsive personal portfolio website showcasing my skills, projects, and brand identity. Built with modern HTML, CSS, and JavaScript to deliver smooth animations and an elegant user experience.",
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "demoUrl": "https://eleazarogoyemi.onrender.com",
+    "sourceUrl": "https://github.com/yourusername/portfolio",
+    "hasPreviewImage": true,
+    "previewUrl": "eleazarogoyemi.onrender.com",
+    "previewLogo": "EO",
+    "previewTitle": "My Portfolio"
+  },
+  {
+    "id": "younal-analytics",
+    "category": "AI Web Application",
+    "status": "complete",
+    "title": "YouTube Analytics Pro",
+    "description": "An intelligent analytics platform that provides YouTube creators with AI-powered insights and recommendations. Extracts performance data, analyzes viewer engagement patterns, and generates actionable recommendations to optimize content strategy.",
+    "technologies": ["AI/ML", "Analytics", "Web App", "YouTube API"],
+    "liveUrl": "https://younal.onrender.com/",
+    "sourceUrl": "#",
+    "hasPreviewImage": true,
+    "previewUrl": "younal.onrender.com",
+    "previewLogo": "YA",
+    "previewTitle": "YouTube Analytics"
+  },
+  {
+    "id": "precious-fruit-preview",
+    "category": "Web App",
+    "status": "complete",
+    "title": "Precious Fruit Beginners School",
+    "description": "A clean, responsive website created with HTML, CSS, and JavaScript. It delivers a smooth user experience and elegant design, showcasing interactive layouts and modern front-end techniques.",
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "liveUrl": "https://preview--precious-fruit-grow.lovable.app/",
+    "sourceUrl": "https://github.com/yourusername/precious-fruit-grow",
+    "hasPreviewImage": true,
+    "previewUrl": "pfbs.org",
+    "previewLogo": "PFBS",
+    "previewTitle": "Precious Fruit Beginners School"
+  },
+  {
+    "id": "eynet-analytics",
+    "category": "Web Platform",
+    "status": "in-progress",
+    "title": "Eynet Analytics Dashboard",
+    "description": "Advanced analytics and data visualization platform providing comprehensive insights and reporting tools for business intelligence and decision making.",
+    "technologies": ["Next.js", "Chart.js", "MySQL", "Analytics"],
+    "demoUrl": "#",
+    "docsUrl": "#",
+    "hasPreviewImage": false,
+    "previewUrl": "eleyoungtech.com",
+    "previewLogo": "EYT",
+    "previewTitle": "Eleyoungtech"
+  },
+  {
+    "id": "personal-portfolio",
+    "category": "Portfolio Website",
+    "status": "complete",
+    "title": "Personal Portfolio Website",
+    "description": "Modern, responsive portfolio website showcasing projects, skills, and professional journey with advanced animations and interactive elements.",
+    "technologies": ["HTML5", "CSS3", "JavaScript", "Responsive"],
+    "liveUrl": "#",
+    "sourceUrl": "#",
+    "hasPreviewImage": false
+  }
+]
