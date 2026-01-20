@@ -1,14 +1,23 @@
 :root {
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --dark-bg: #0a0a0a;
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0a0;
-  --text-accent: #00f2fe;
-  --hover-glow: 0 20px 40px rgba(102, 126, 234, 0.3);
+  --primary-gradient: var(
+    --ds-gradient-primary,
+    linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+  );
+  --secondary-gradient: var(
+    --ds-gradient-secondary,
+    linear-gradient(135deg, #f093fb 0%, #f5576c 100%)
+  );
+  --accent-gradient: var(
+    --ds-gradient-accent,
+    linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)
+  );
+  --dark-bg: var(--ds-bg-primary, #0a0a0a);
+  --card-bg: var(--ds-glass-bg, rgba(255, 255, 255, 0.05));
+  --glass-border: var(--ds-glass-border, rgba(255, 255, 255, 0.1));
+  --text-primary: var(--ds-text-primary, #ffffff);
+  --text-secondary: var(--ds-text-secondary, #a0a0a0);
+  --text-accent: var(--ds-text-accent, #00f2fe);
+  --hover-glow: var(--ds-shadow-hover, 0 20px 40px rgba(102, 126, 234, 0.3));
 }
 
 * {
@@ -23,7 +32,7 @@ html {
 
 body {
   font-family: "Inter", sans-serif;
-  background: #000;
+  background: var(--ds-bg-primary, #000);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
@@ -32,15 +41,15 @@ body {
 
 /* Grid Background */
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
   z-index: 1;
@@ -48,7 +57,7 @@ body::before {
 
 /* Noise Texture */
 body::after {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -72,7 +81,11 @@ body::after {
 .gradient-blob:nth-child(1) {
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.3) 0%,
+    transparent 70%
+  );
   top: -200px;
   left: -200px;
   animation: float 20s ease-in-out infinite;
@@ -81,16 +94,27 @@ body::after {
 .gradient-blob:nth-child(2) {
   width: 800px;
   height: 800px;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(168, 85, 247, 0.2) 0%,
+    transparent 70%
+  );
   bottom: -300px;
   right: -300px;
   animation: float 25s ease-in-out infinite reverse;
 }
 
 @keyframes float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(100px, -50px) rotate(120deg); }
-  66% { transform: translate(-50px, 100px) rotate(240deg); }
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(100px, -50px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-50px, 100px) rotate(240deg);
+  }
 }
 
 /* Cursor Glow */
@@ -98,7 +122,11 @@ body::after {
   position: fixed;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.1) 0%,
+    transparent 70%
+  );
   border-radius: 50%;
   pointer-events: none;
   z-index: 4;
@@ -114,8 +142,17 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+  background:
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(59, 130, 246, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(168, 85, 247, 0.1) 0%,
+      transparent 50%
+    );
   pointer-events: none;
   z-index: 5;
   transition: transform 0.1s ease-out;
@@ -142,8 +179,9 @@ header {
   z-index: 1000;
   padding: 20px 0;
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--glass-border);
-  background: rgba(10, 10, 10, 0.8);
+  background: var(--ds-nav-bg, rgba(10, 10, 10, 0.8));
 }
 
 nav {
@@ -414,7 +452,7 @@ nav {
   transition: all 0.3s ease;
   cursor: pointer;
   display: inline-block;
-white-space: nowrap;
+  white-space: nowrap;
 }
 
 .btn-primary {
@@ -460,7 +498,8 @@ white-space: nowrap;
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       135deg,
       rgba(102, 126, 234, 0.3) 0%,
       rgba(118, 75, 162, 0.3) 100%
@@ -558,13 +597,18 @@ white-space: nowrap;
 }
 
 .experience-card::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
 }
 
 .experience-card::before {
