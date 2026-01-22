@@ -1,5 +1,69 @@
 // projects-loader.js - Simplified Dynamic Project Card Generator
 
+// Fallback projects data for when fetch fails (e.g., CORS on file://)
+const FALLBACK_PROJECTS = [
+  {
+    id: "eleazarpreview",
+    category: "Web Portfolio",
+    status: "complete",
+    title: "Eleazar Ogoyemi Portfolio",
+    description:
+      "A fully responsive personal portfolio website showcasing my skills, projects, and brand identity. Built with modern HTML, CSS, and JavaScript to deliver smooth animations and an elegant user experience.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    demoUrl: "https://eleazarogoyemi.onrender.com",
+    sourceUrl: "https://github.com/yourusername/portfolio",
+    hasPreviewImage: true,
+    previewUrl: "eleazarogoyemi.onrender.com",
+    previewLogo: "EO",
+    previewTitle: "My Portfolio",
+  },
+  {
+    id: "younal-analytics",
+    category: "AI Web Application",
+    status: "complete",
+    title: "YouTube Analytics Pro",
+    description:
+      "An intelligent analytics platform that provides YouTube creators with AI-powered insights and recommendations. Extracts performance data, analyzes viewer engagement patterns, and generates actionable recommendations to optimize content strategy.",
+    technologies: ["AI/ML", "Analytics", "Web App", "YouTube API"],
+    liveUrl: "https://younal.onrender.com/",
+    sourceUrl: "#",
+    hasPreviewImage: true,
+    previewUrl: "younal.onrender.com",
+    previewLogo: "YA",
+    previewTitle: "YouTube Analytics",
+  },
+  {
+    id: "precious-fruit-preview",
+    category: "Web App",
+    status: "complete",
+    title: "Precious Fruit Beginners School",
+    description:
+      "A clean, responsive website created with HTML, CSS, and JavaScript. It delivers a smooth user experience and elegant design, showcasing interactive layouts and modern front-end techniques.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    liveUrl: "https://preview--precious-fruit-grow.lovable.app/",
+    sourceUrl: "https://github.com/yourusername/precious-fruit-grow",
+    hasPreviewImage: true,
+    previewUrl: "pfbs.org",
+    previewLogo: "PFBS",
+    previewTitle: "Precious Fruit Beginners School",
+  },
+  {
+    id: "eynet-analytics",
+    category: "Web Platform",
+    status: "in-progress",
+    title: "Eynet Analytics Dashboard",
+    description:
+      "Advanced analytics and data visualization platform providing comprehensive insights and reporting tools for business intelligence and decision making.",
+    technologies: ["Next.js", "Chart.js", "MySQL", "Analytics"],
+    demoUrl: "#",
+    docsUrl: "#",
+    hasPreviewImage: false,
+    previewUrl: "eleyoungtech.com",
+    previewLogo: "EYT",
+    previewTitle: "Eleyoungtech",
+  },
+];
+
 // Wait for page to load
 window.addEventListener("load", function () {
   loadProjects();
@@ -19,6 +83,8 @@ async function loadProjects() {
   container.innerHTML =
     '<p style="text-align:center; padding:40px; font-size:18px;">Loading projects...</p>';
 
+  let projects;
+
   try {
     // Try to fetch the JSON
     console.log("📡 Fetching projects.json...");
@@ -28,33 +94,50 @@ async function loadProjects() {
       throw new Error("Cannot load projects.json");
     }
 
-    const projects = await response.json();
-    console.log("✅ Loaded projects:", projects);
-
-    // Clear container
-    container.innerHTML = "";
-
-    // Create each card
-    projects.forEach((project) => {
-      const card = makeCard(project);
-      container.appendChild(card);
-    });
-
-    console.log("✅ All cards created!");
-    
-    // Make cards visible
-    setTimeout(() => {
-      document.querySelectorAll('.project-card').forEach(card => {
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-        card.style.visibility = 'visible';
-      });
-    }, 100);
+    projects = await response.json();
+    console.log("✅ Loaded projects from JSON:", projects);
   } catch (error) {
-    console.error("❌ Error:", error);
-    container.innerHTML =
-      '<p style="color:red; text-align:center; padding:40px;">Error loading projects. Check console.</p>';
+    console.warn(
+      "⚠️ Fetch failed (likely CORS on file://), using fallback data:",
+      error.message,
+    );
+    // Use fallback data when fetch fails (e.g., when opening file:// directly)
+    projects = FALLBACK_PROJECTS;
   }
+
+  // Render projects
+  renderProjects(container, projects);
+}
+
+function renderProjects(container, projects) {
+  // Clear container
+  container.innerHTML = "";
+
+  // Store projects for later use
+  window.projectsData = projects;
+
+  // Create each card
+  projects.forEach((project) => {
+    const card = makeCard(project);
+    // Add category data attribute for filtering
+    card.dataset.category = project.category;
+    container.appendChild(card);
+  });
+
+  console.log("✅ All cards created!");
+
+  // Make cards visible
+  setTimeout(() => {
+    document.querySelectorAll(".project-card").forEach((card) => {
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+      card.style.visibility = "visible";
+      card.classList.add("filter-visible");
+    });
+  }, 100);
+
+  // Initialize filter tabs
+  initFilterTabs();
 }
 
 function makeCard(project) {
@@ -179,5 +262,37 @@ function loadPreviewImages() {
       console.log(`ℹ️ No image for: ${id}`);
     };
     img.src = imagePath;
+  });
+}
+
+// Filter tabs functionality
+function initFilterTabs() {
+  const filterTabs = document.querySelectorAll(".filter-tab");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  if (filterTabs.length === 0) return;
+
+  filterTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      // Update active tab
+      filterTabs.forEach((t) => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      const filter = tab.dataset.filter;
+
+      // Filter projects
+      projectCards.forEach((card) => {
+        const category = card.dataset.category;
+        const shouldShow = filter === "all" || category === filter;
+
+        if (shouldShow) {
+          card.classList.remove("filter-hidden");
+          card.classList.add("filter-visible");
+        } else {
+          card.classList.remove("filter-visible");
+          card.classList.add("filter-hidden");
+        }
+      });
+    });
   });
 }

@@ -78,32 +78,35 @@ document.addEventListener("mousemove", (e) => {
   }
 });
 
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  const submitBtn = this.querySelector(".submit-btn");
-  const btnText = submitBtn.querySelector(".btn-text");
-  const btnLoading = submitBtn.querySelector(".btn-loading");
-  const successMessage = document.getElementById("successMessage");
+    const submitBtn = this.querySelector(".submit-btn");
+    const btnText = submitBtn.querySelector(".btn-text");
+    const btnLoading = submitBtn.querySelector(".btn-loading");
+    const successMessage = document.getElementById("successMessage");
 
-  btnText.style.display = "none";
-  btnLoading.style.display = "inline";
-  submitBtn.disabled = true;
-
-  setTimeout(() => {
-    btnText.style.display = "inline";
-    btnLoading.style.display = "none";
-    submitBtn.disabled = false;
-
-    successMessage.classList.add("show");
-
-    this.reset();
+    btnText.style.display = "none";
+    btnLoading.style.display = "inline";
+    submitBtn.disabled = true;
 
     setTimeout(() => {
-      successMessage.classList.remove("show");
-    }, 5000);
-  }, 2000);
-});
+      btnText.style.display = "inline";
+      btnLoading.style.display = "none";
+      submitBtn.disabled = false;
+
+      successMessage.classList.add("show");
+
+      this.reset();
+
+      setTimeout(() => {
+        successMessage.classList.remove("show");
+      }, 5000);
+    }, 2000);
+  });
+}
 
 document.querySelectorAll(".method-card").forEach((card) => {
   card.addEventListener("mouseenter", () => {
