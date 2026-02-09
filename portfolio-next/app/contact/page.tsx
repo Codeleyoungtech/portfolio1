@@ -104,7 +104,7 @@ export default function ContactPage() {
                                     />
                                 </div>
 
-                                <div className="form-group">
+                                {/* <div className="form-group">
                                     <label className="form-label">Subject *</label>
                                     <select
                                         name="subject"
@@ -118,9 +118,9 @@ export default function ContactPage() {
                                         <option value="collaboration">Collaboration</option>
                                         <option value="speaking">Speaking/Workshop</option>
                                     </select>
-                                </div>
+                                </div> */}
 
-                                <div className="form-group">
+                                {/* <div className="form-group">
                                     <label className="form-label">Budget (Optional)</label>
                                     <input
                                         type="text"
@@ -130,7 +130,7 @@ export default function ContactPage() {
                                         className="form-input"
                                         placeholder="e.g., $5K - $10K"
                                     />
-                                </div>
+                                </div> */}
 
                                 <div className="form-group">
                                     <label className="form-label">Message *</label>
@@ -141,7 +141,7 @@ export default function ContactPage() {
                                         required
                                         className="form-textarea"
                                         placeholder="Tell me about your project..."
-                                        rows={6}
+                                        rows={5}
                                     />
                                 </div>
 
@@ -152,7 +152,7 @@ export default function ContactPage() {
                                     style={{ width: '100%' }}
                                 >
                                     {status === 'sending' ? 'Sending...' : 'Send Message'}
-                                    <Send size={20} />
+                                    <Send size={10} />
                                 </button>
 
                                 {status === 'success' && (

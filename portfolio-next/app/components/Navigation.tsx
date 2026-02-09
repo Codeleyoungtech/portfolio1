@@ -3,11 +3,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Sun, Moon } from 'lucide-react';
 import styles from './Navigation.module.css';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -28,6 +30,11 @@ export default function Navigation() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    // Theme toggle logic can be implemented later
+  };
+
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/work', label: 'Work' },
@@ -43,17 +50,6 @@ export default function Navigation() {
             ELEAZAR OGOYEMI
           </Link>
 
-          {/* Hamburger Menu */}
-          <button
-            className={`${styles.hamburger} ${isMenuOpen ? styles.active : ''}`}
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-
           {/* Desktop Navigation */}
           <ul className={styles.navLinks}>
             {navLinks.map((link) => (
@@ -67,6 +63,26 @@ export default function Navigation() {
               </li>
             ))}
           </ul>
+
+          {/* Theme Toggle */}
+          <button
+            className={styles.themeToggle}
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+
+          {/* Hamburger Menu */}
+          <button
+            className={`${styles.hamburger} ${isMenuOpen ? styles.active : ''}`}
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </nav>
       </header>
 

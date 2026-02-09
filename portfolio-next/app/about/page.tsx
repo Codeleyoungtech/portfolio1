@@ -1,4 +1,4 @@
-import { Users2, Monitor, Palette, Video, Target, Lightbulb, Coffee, Gamepad, MapPin, BookOpen } from 'lucide-react';
+import { Users2, Monitor, Palette, Video, Target, Lightbulb, Coffee, Gamepad, MapPin, BookOpen, PillBottle, GlassWater } from 'lucide-react';
 import styles from './page.module.css';
 
 export default function AboutPage() {
@@ -96,9 +96,9 @@ export default function AboutPage() {
                     <h2 className={styles.sectionTitle}>Quick Facts</h2>
                     <div className={styles.factsGrid}>
                         {[
-                            { icon: <Coffee size={24} />, text: 'Coffee enthusiast' },
-                            { icon: <Gamepad size={24} />, text: 'Gamer in free time' },
-                            { icon: <MapPin size={24} />, text: 'Based in Nigeria' },
+                            { icon: <GlassWater size={24} />, text: 'Coke drinker' },
+                            { icon: <Gamepad size={24} />, text: 'Nerd in free time' },
+                            { icon: <MapPin size={24} />, text: 'Based all over the world' },
                             { icon: <BookOpen size={24} />, text: 'Always learning' },
                         ].map((fact, i) => (
                             <div key={i} className={styles.fact}>
