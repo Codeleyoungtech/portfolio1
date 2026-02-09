@@ -1,0 +1,414 @@
+.page {
+  min-height: 100vh;
+}
+
+/* ==========================================
+   HERO SECTION
+   ========================================== */
+
+.hero {
+  padding: calc(80px + var(--spacing-4xl)) 0 var(--spacing-5xl);
+  background: linear-gradient(180deg, rgba(255, 107, 53, 0.05) 0%, var(--color-bg) 50%);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--spacing-4xl);
+  align-items: center;
+}
+
+.heroContent {
+  max-width: 600px;
+}
+
+.greeting {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.wave {
+  animation: wave 2.5s ease-in-out infinite;
+  display: inline-block;
+  transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  10%,
+  30% {
+    transform: rotate(14deg);
+  }
+
+  20% {
+    transform: rotate(-8deg);
+  }
+
+  40% {
+    transform: rotate(10deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text-primary);
+}
+
+.subtitle {
+  font-size: var(--text-xl);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.ctas {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.heroVisual {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* ==========================================
+   SECTION HEADERS
+   ========================================== */
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: var(--font-weight-extrabold);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-primary);
+}
+
+.sectionDescription {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: var(--line-height-relaxed);
+}
+
+/* ==========================================
+   PROJECTS SECTION
+   ========================================== */
+
+.projectsSection {
+  padding: var(--spacing-5xl) 0;
+  background: var(--color-surface);
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.projectCard {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.projectCard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-2xl);
+  border-color: var(--color-primary);
+}
+
+.projectImage {
+  width: 100%;
+  height: 240px;
+  position: relative;
+  overflow: hidden;
+  background: var(--gradient-subtle);
+}
+
+.projectImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.projectCard:hover .projectImage img {
+  transform: scale(1.05);
+}
+
+.projectContent {
+  padding: var(--spacing-xl);
+}
+
+.projectIcon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-primary);
+  color: white;
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+.projectTitle {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.projectDescription {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-lg);
+}
+
+.projectTags {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-lg);
+}
+
+.projectMetrics {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--text-sm);
+  color: var(--color-success);
+  font-weight: var(--font-weight-medium);
+}
+
+.viewAllCta {
+  text-align: center;
+}
+
+/* ==========================================
+   TESTIMONIALS & PREVIEW SECTIONS
+   ========================================== */
+
+.testimonialsSection {
+  padding: var(--spacing-5xl) 0;
+  background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%);
+}
+
+.previewSection {
+  padding: var(--spacing-5xl) 0;
+  background: var(--color-surface);
+}
+
+.previewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--spacing-3xl);
+}
+
+.aboutCard,
+.youtubeCard {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-2xl);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.aboutCard:hover,
+.youtubeCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-accent);
+}
+
+.aboutCard svg,
+.youtubeCard svg {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.aboutCard h3,
+.youtubeCard h3 {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-md);
+}
+
+.aboutCard p,
+.youtubeCard p {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-xl);
+}
+
+.youtubeStats {
+  display: flex;
+  gap: var(--spacing-2xl);
+  margin: var(--spacing-xl) 0;
+}
+
+.stat {
+  text-align: left;
+}
+
+.statNumber {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-extrabold);
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.statLabel {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+  margin-top: var(--spacing-xs);
+}
+
+/* ==========================================
+   CTA SECTION
+   ========================================== */
+
+.ctaSection {
+  padding: var(--spacing-5xl) 0;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
+}
+
+.ctaIcon {
+  color: var(--color-primary);
+  margin: 0 auto var(--spacing-xl);
+}
+
+.ctaTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: var(--font-weight-extrabold);
+  margin-bottom: var(--spacing-md);
+}
+
+.ctaSubtitle {
+  font-size: var(--text-xl);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto var(--spacing-2xl);
+  line-height: var(--line-height-relaxed);
+}
+
+.ctaButtons {
+  display: flex;
+  gap: var(--spacing-lg);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-3xl);
+  }
+
+  .heroVisual {
+    order: -1;
+  }
+
+  .heroContent {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .ctas {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: calc(80px + var(--spacing-3xl)) 0 var(--spacing-4xl);
+  }
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .previewGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ctas .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .projectImage {
+    height: 200px;
+  }
+
+  .projectContent {
+    padding: var(--spacing-lg);
+  }
+
+  .aboutCard,
+  .youtubeCard {
+    padding: var(--spacing-xl);
+  }
+}
